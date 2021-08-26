@@ -126,6 +126,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             } else {
                 statusMessage = "Tap Get My Location' to Start"
             }
+            messageLabel.text = statusMessage
         }
     }
 }
