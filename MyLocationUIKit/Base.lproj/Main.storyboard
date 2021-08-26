@@ -46,8 +46,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Address goes here)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-Sr-tZl">
-                                <rect key="frame" x="83" y="175" width="154.5" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Address goes here)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-Sr-tZl">
+                                <rect key="frame" x="8" y="175" width="304" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jUD-Ai-I3I"/>
                                 </constraints>
@@ -76,15 +76,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5pM-rX-rXH" secondAttribute="trailing" constant="16" id="Dbk-sN-N6l"/>
                             <constraint firstItem="sgn-de-VyX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="E0y-oK-rbO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5pM-rX-rXH" secondAttribute="bottom" constant="27" id="HgS-qR-37L"/>
-                            <constraint firstItem="LSf-Sr-tZl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="S8x-rF-LJD"/>
+                            <constraint firstItem="LSf-Sr-tZl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="O9N-d3-9y1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KUo-ms-d0e" secondAttribute="trailing" constant="26" id="UUV-Rg-XcP"/>
                             <constraint firstItem="3Bh-x1-tlz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="Uyr-Wm-i0U"/>
                             <constraint firstItem="5pM-rX-rXH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZlE-FS-bYT"/>
                             <constraint firstItem="Rs9-w5-y43" firstAttribute="top" secondItem="sgn-de-VyX" secondAttribute="bottom" constant="41" id="ZzN-3l-bw9"/>
                             <constraint firstItem="3Bh-x1-tlz" firstAttribute="top" secondItem="Rs9-w5-y43" secondAttribute="bottom" constant="18" id="aCp-m7-BlE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LSf-Sr-tZl" secondAttribute="bottom" constant="294" id="dRb-ji-pRV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LSf-Sr-tZl" secondAttribute="trailing" constant="8" id="duD-0N-R1w"/>
                             <constraint firstItem="3Bh-x1-tlz" firstAttribute="top" secondItem="Rs9-w5-y43" secondAttribute="bottom" constant="18" id="gaa-iV-k4m"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LSf-Sr-tZl" secondAttribute="trailing" constant="82.5" id="ghv-pu-yhg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aT9-Qg-H7f" secondAttribute="trailing" constant="16" id="hml-By-kab"/>
                             <constraint firstItem="5pM-rX-rXH" firstAttribute="top" secondItem="aT9-Qg-H7f" secondAttribute="bottom" constant="163" id="oLG-42-tgw"/>
                             <constraint firstItem="KUo-ms-d0e" firstAttribute="top" secondItem="sgn-de-VyX" secondAttribute="bottom" constant="41" id="rNe-zE-T89"/>
@@ -114,6 +114,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="npt-jX-6OF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D4O-KN-L20">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
