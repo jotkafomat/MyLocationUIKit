@@ -14,6 +14,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var location: CLLocation?
     var updatingLocation = false
     var lastLocationError: Error?
+    let geocoder = CLGeocoder()
+    var placemark: CLPlacemark?
+    var performingReverseGeocoding = false
+    var lastGeocodingError: Error?
     
     
     override func viewDidLoad() {
@@ -74,29 +78,40 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
         
-        // 1
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
             return
         }
         
-        // 2
         if newLocation.horizontalAccuracy < 0 {
             return
         }
         
-        // 3
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             
-            // 4
             lastLocationError = nil
             location = newLocation
             
-            // 5
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
                 print("*** We're done!")
                 stopLocationManager()
             }
             updateLabels()
+            
+            if !performingReverseGeocoding {
+                print("*** Going to geocode")
+                
+                performingReverseGeocoding = true
+                
+                geocoder.reverseGeocodeLocation(newLocation) {placemarks, error in
+                    if let error = error {
+                        print("*** Reverse Geocoding error: \(error.localizedDescription)")
+                        return
+                    }
+                    if let places = placemarks {
+                        print("*** Found places: \(places)")
+                    }
+                }
+            }
         }
     }
     func stopLocationManager() {
