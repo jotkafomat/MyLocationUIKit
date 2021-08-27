@@ -252,7 +252,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbP-LF-7Gn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Address" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbP-LF-7Gn">
                                                     <rect key="frame" x="16" y="12" width="62.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -319,7 +319,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressLabel" destination="KbP-LF-7Gn" id="9bC-IM-DWP"/>
+                        <outlet property="addressLabel" destination="KbP-LF-7Gn" id="gDt-Zr-if0"/>
                         <outlet property="categoryLabel" destination="7gl-u7-YBz" id="SmW-e1-4TP"/>
                         <outlet property="dateLabel" destination="dof-oO-jJC" id="16q-oE-aOs"/>
                         <outlet property="descriptionTextView" destination="IgC-LC-Ci0" id="erg-e8-cdU"/>
