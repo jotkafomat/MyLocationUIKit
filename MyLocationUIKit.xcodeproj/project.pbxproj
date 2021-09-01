@@ -17,6 +17,8 @@
 		E1BF8F4726D8C61500F52F41 /* LocationDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF8F4626D8C61500F52F41 /* LocationDetailsTableViewController.swift */; };
 		E1BF8F4926D8E82300F52F41 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF8F4826D8E82300F52F41 /* CategoryPickerViewController.swift */; };
 		E1BF8FB126DE19CA00F52F41 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF8FB026DE19CA00F52F41 /* HudView.swift */; };
+		E1BF909326DF7CFA00F52F41 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF909126DF7CFA00F52F41 /* Location+CoreDataClass.swift */; };
+		E1BF909426DF7CFA00F52F41 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF909226DF7CFA00F52F41 /* Location+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		E1BF8F4626D8C61500F52F41 /* LocationDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsTableViewController.swift; sourceTree = "<group>"; };
 		E1BF8F4826D8E82300F52F41 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		E1BF8FB026DE19CA00F52F41 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		E1BF909126DF7CFA00F52F41 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1BF909226DF7CFA00F52F41 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 		E14137F426D537FC00300CAA = {
 			isa = PBXGroup;
 			children = (
+				E1BF909126DF7CFA00F52F41 /* Location+CoreDataClass.swift */,
+				E1BF909226DF7CFA00F52F41 /* Location+CoreDataProperties.swift */,
 				E14137FF26D537FC00300CAA /* MyLocationUIKit */,
 				E14137FE26D537FC00300CAA /* Products */,
 			);
@@ -153,6 +159,8 @@
 				E141380526D537FC00300CAA /* CurrentLocationViewController.swift in Sources */,
 				E141380B26D537FC00300CAA /* MyLocationUIKit.xcdatamodeld in Sources */,
 				E141380126D537FC00300CAA /* AppDelegate.swift in Sources */,
+				E1BF909326DF7CFA00F52F41 /* Location+CoreDataClass.swift in Sources */,
+				E1BF909426DF7CFA00F52F41 /* Location+CoreDataProperties.swift in Sources */,
 				E1BF8F4726D8C61500F52F41 /* LocationDetailsTableViewController.swift in Sources */,
 				E1BF8FB126DE19CA00F52F41 /* HudView.swift in Sources */,
 				E141380326D537FC00300CAA /* SceneDelegate.swift in Sources */,
