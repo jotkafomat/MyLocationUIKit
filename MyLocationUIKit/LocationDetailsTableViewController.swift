@@ -36,11 +36,22 @@ class LocationDetailsTableViewController: UITableViewController {
         else { return }
         let hudView = HudView.hud(inView: mainView, animated: true)
         hudView.text = "Tagged"
-        
-        let delayInSeconds = 0.6
-        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
-            hudView.hide()
-            self.navigationController?.popViewController(animated: true)
+        let location = Location(context: managedObjectContext)
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        do {
+            try managedObjectContext.save()
+            afterDelay(0.6) {
+                hudView.hide()
+                self.navigationController?.popViewController(
+                    animated: true)
+            }
+        } catch {
+            fatalError("Error: \(error)")
         }
     }
     
@@ -73,7 +84,7 @@ class LocationDetailsTableViewController: UITableViewController {
         } else {
             addressLabel.text = "No Address Found"
         }
-        dateLabel.text = format(date: Date())
+        dateLabel.text = format(date: date)
         
         let gestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -153,5 +164,6 @@ class LocationDetailsTableViewController: UITableViewController {
     }
     // MARK: - CoreDeta
     var managedObjectContext: NSManagedObjectContext!
-
+    var date = Date()
+    
 }
