@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 private let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -32,14 +33,14 @@ class LocationDetailsTableViewController: UITableViewController {
     // MARK: - Actions
     @IBAction func done() {
         guard let mainView = navigationController?.parent?.view
-          else { return }
-          let hudView = HudView.hud(inView: mainView, animated: true)
-          hudView.text = "Tagged"
+        else { return }
+        let hudView = HudView.hud(inView: mainView, animated: true)
+        hudView.text = "Tagged"
         
         let delayInSeconds = 0.6
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
             hudView.hide()
-          self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -48,13 +49,13 @@ class LocationDetailsTableViewController: UITableViewController {
     }
     
     @IBAction func categoryPickerDidPickCategory(
-      _ segue: UIStoryboardSegue
+        _ segue: UIStoryboardSegue
     ) {
-      let controller = segue.source as! CategoryPickerViewController
-      categoryName = controller.selectedCategoryName
-      categoryLabel.text = categoryName
+        let controller = segue.source as! CategoryPickerViewController
+        categoryName = controller.selectedCategoryName
+        categoryLabel.text = categoryName
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,23 +83,23 @@ class LocationDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(
-      _ tableView: UITableView,
-      willSelectRowAt indexPath: IndexPath
+        _ tableView: UITableView,
+        willSelectRowAt indexPath: IndexPath
     ) -> IndexPath? {
-      if indexPath.section == 0 || indexPath.section == 1 {
-        return indexPath
-      } else {
-        return nil
-      }
+        if indexPath.section == 0 || indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
     }
     
     override func tableView(
-      _ tableView: UITableView,
-      didSelectRowAt indexPath: IndexPath
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
     ) {
-      if indexPath.section == 0 && indexPath.row == 0 {
-        descriptionTextView.becomeFirstResponder()
-      }
+        if indexPath.section == 0 && indexPath.row == 0 {
+            descriptionTextView.becomeFirstResponder()
+        }
     }
     
     
@@ -131,23 +132,26 @@ class LocationDetailsTableViewController: UITableViewController {
     }
     
     @objc func hideKeyboard(
-      _ gestureRecognizer: UIGestureRecognizer
+        _ gestureRecognizer: UIGestureRecognizer
     ) {
-      let point = gestureRecognizer.location(in: tableView)
-      let indexPath = tableView.indexPathForRow(at: point)
-
-      if indexPath != nil && indexPath!.section == 0 &&
-      indexPath!.row == 0 {
-        return
-      }
-      descriptionTextView.resignFirstResponder()
+        let point = gestureRecognizer.location(in: tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        if indexPath != nil && indexPath!.section == 0 &&
+            indexPath!.row == 0 {
+            return
+        }
+        descriptionTextView.resignFirstResponder()
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.identifier == "PickCategory" {
-        let controller = segue.destination as! CategoryPickerViewController
-        controller.selectedCategoryName = categoryName
-      }
+        if segue.identifier == "PickCategory" {
+            let controller = segue.destination as! CategoryPickerViewController
+            controller.selectedCategoryName = categoryName
+        }
     }
+    // MARK: - CoreDeta
+    var managedObjectContext: NSManagedObjectContext!
+
 }
