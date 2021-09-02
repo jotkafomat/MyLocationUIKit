@@ -385,7 +385,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="65" id="09J-mB-ME8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="65" id="09J-mB-ME8" customClass="LocationCell" customModule="MyLocationUIKit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="09J-mB-ME8" id="kFn-yF-zAx">
@@ -415,6 +415,10 @@
                                         <constraint firstItem="310-82-z7d" firstAttribute="leading" secondItem="kFn-yF-zAx" secondAttribute="leadingMargin" constant="13" id="wJa-jE-rvu"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addressLabel" destination="Qmg-Wr-jfM" id="td6-F3-ZM5"/>
+                                    <outlet property="descriptionLabel" destination="310-82-z7d" id="bnY-Ms-0fp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
