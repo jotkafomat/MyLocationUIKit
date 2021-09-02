@@ -20,6 +20,7 @@
 		E1BF909326DF7CFA00F52F41 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF909126DF7CFA00F52F41 /* Location+CoreDataClass.swift */; };
 		E1BF909426DF7CFA00F52F41 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF909226DF7CFA00F52F41 /* Location+CoreDataProperties.swift */; };
 		E1BF909626DF8B4F00F52F41 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF909526DF8B4E00F52F41 /* Functions.swift */; };
+		E1BF90DA26E1152800F52F41 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF90D926E1152800F52F41 /* LocationsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E1BF909126DF7CFA00F52F41 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E1BF909226DF7CFA00F52F41 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1BF909526DF8B4E00F52F41 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		E1BF90D926E1152800F52F41 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				E1BF8F4826D8E82300F52F41 /* CategoryPickerViewController.swift */,
 				E1BF8FB026DE19CA00F52F41 /* HudView.swift */,
 				E1BF909526DF8B4E00F52F41 /* Functions.swift */,
+				E1BF90D926E1152800F52F41 /* LocationsViewController.swift */,
 			);
 			path = MyLocationUIKit;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				E141380526D537FC00300CAA /* CurrentLocationViewController.swift in Sources */,
 				E141380B26D537FC00300CAA /* MyLocationUIKit.xcdatamodeld in Sources */,
 				E1BF909626DF8B4F00F52F41 /* Functions.swift in Sources */,
+				E1BF90DA26E1152800F52F41 /* LocationsViewController.swift in Sources */,
 				E141380126D537FC00300CAA /* AppDelegate.swift in Sources */,
 				E1BF909326DF7CFA00F52F41 /* Location+CoreDataClass.swift in Sources */,
 				E1BF909426DF7CFA00F52F41 /* Location+CoreDataProperties.swift in Sources */,
