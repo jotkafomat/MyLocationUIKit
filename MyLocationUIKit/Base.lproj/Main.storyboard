@@ -418,6 +418,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="Qmg-Wr-jfM" id="td6-F3-ZM5"/>
                                     <outlet property="descriptionLabel" destination="310-82-z7d" id="bnY-Ms-0fp"/>
+                                    <segue destination="Mkh-Ov-HpW" kind="show" identifier="EditLocation" id="7GO-Tq-BJe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -430,7 +431,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCL-fz-ovU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1001.25" y="78.16901408450704"/>
+            <point key="canvasLocation" x="2029" y="973"/>
         </scene>
         <!--Locations-->
         <scene sceneID="OiJ-Hu-PfL">
@@ -447,7 +448,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ubg-Wa-qo4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1978" y="79"/>
+            <point key="canvasLocation" x="996" y="973"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bzT-Cv-hGO">
@@ -474,6 +475,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rxD-y2-FEA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Tag" id="7L3-sO-z9m"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="gho-GC-Xlx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qmg-6S-K5R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -485,9 +487,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEc-si-o9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031.25" y="88.732394366197184"/>
+            <point key="canvasLocation" x="1204" y="89"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7GO-Tq-BJe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

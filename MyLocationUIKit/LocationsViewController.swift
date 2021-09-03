@@ -12,33 +12,44 @@ import CoreLocation
 class LocationsViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
-    var locations = [Location]()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Location> = {
+      let fetchRequest = NSFetchRequest<Location>()
+
+      let entity = Location.entity()
+      fetchRequest.entity = entity
+
+      let sortDescriptor = NSSortDescriptor(
+        key: "date",
+        ascending: true)
+      fetchRequest.sortDescriptors = [sortDescriptor]
+
+      fetchRequest.fetchBatchSize = 20
+
+      let fetchedResultsController = NSFetchedResultsController(
+        fetchRequest: fetchRequest,
+        managedObjectContext: self.managedObjectContext,
+        sectionNameKeyPath: nil,
+        cacheName: "Locations")
+
+      fetchedResultsController.delegate = self
+      return fetchedResultsController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fetchRequest = NSFetchRequest<Location>()
-        
-        let entity = Location.entity()
-        fetchRequest.entity = entity
-        
-        let sortDescriptor = NSSortDescriptor(
-            key: "date",
-            ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        do {
-            
-            locations = try managedObjectContext.fetch(fetchRequest)
-        } catch {
-            fatalError("Error: \(error)")
-        }
+        super.viewDidLoad()
+          performFetch()
+ 
     }    
     // MARK: - Table View Delegates
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return locations.count
+        let sectionInfo = fetchedResultsController.sections![section]
+          return sectionInfo.numberOfObjects
     }
     
     override func tableView(
@@ -48,11 +59,37 @@ class LocationsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "LocationCell",
             for: indexPath) as! LocationCell
-        
-        let location = locations[indexPath.row]
-        cell.configure(for: location)
+
+          let location = fetchedResultsController.object(at: indexPath)
+          cell.configure(for: location)
         
         return cell
-        
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.identifier == "EditLocation" {
+        let controller = segue.destination  as! LocationDetailsTableViewController
+        controller.managedObjectContext = managedObjectContext
+
+        if let indexPath = tableView.indexPath(
+          for: sender as! UITableViewCell) {
+          let location = fetchedResultsController.object(at: indexPath)
+          controller.locationToEdit = location
+        }
+      }
+    }
+    
+    // MARK: - Helper methods
+    func performFetch() {
+      do {
+        try fetchedResultsController.performFetch()
+      } catch {
+        print(error)
+      }
+    }
+    
+    deinit {
+      fetchedResultsController.delegate = nil
     }
 }
