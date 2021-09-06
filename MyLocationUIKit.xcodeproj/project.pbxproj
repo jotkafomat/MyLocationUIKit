@@ -14,6 +14,7 @@
 		E141380B26D537FC00300CAA /* MyLocationUIKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E141380926D537FC00300CAA /* MyLocationUIKit.xcdatamodeld */; };
 		E141380D26D537FE00300CAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E141380C26D537FE00300CAA /* Assets.xcassets */; };
 		E141381026D537FE00300CAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E141380E26D537FE00300CAA /* LaunchScreen.storyboard */; };
+		E1AF45E926E6436F009B4908 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AF45E826E6436E009B4908 /* MapViewController.swift */; };
 		E1BF8F4726D8C61500F52F41 /* LocationDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF8F4626D8C61500F52F41 /* LocationDetailsTableViewController.swift */; };
 		E1BF8F4926D8E82300F52F41 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF8F4826D8E82300F52F41 /* CategoryPickerViewController.swift */; };
 		E1BF8FB126DE19CA00F52F41 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF8FB026DE19CA00F52F41 /* HudView.swift */; };
@@ -35,6 +36,7 @@
 		E141380C26D537FE00300CAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E141380F26D537FE00300CAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E141381126D537FE00300CAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AF45E826E6436E009B4908 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E1BF8F4626D8C61500F52F41 /* LocationDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsTableViewController.swift; sourceTree = "<group>"; };
 		E1BF8F4826D8E82300F52F41 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		E1BF8FB026DE19CA00F52F41 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				E1BF90D926E1152800F52F41 /* LocationsViewController.swift */,
 				E1BF90DD26E120DB00F52F41 /* LocationCell.swift */,
 				E1BF90E326E2343900F52F41 /* LocationsViewController + NSFetchedResultsControllerDelegate.swift */,
+				E1AF45E826E6436E009B4908 /* MapViewController.swift */,
 			);
 			path = MyLocationUIKit;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				E1BF90E426E2343900F52F41 /* LocationsViewController + NSFetchedResultsControllerDelegate.swift in Sources */,
 				E1BF8FB126DE19CA00F52F41 /* HudView.swift in Sources */,
 				E141380326D537FC00300CAA /* SceneDelegate.swift in Sources */,
+				E1AF45E926E6436F009B4908 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
