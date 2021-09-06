@@ -15,8 +15,19 @@ class MapViewController: UIViewController {
     
     var locations = [Location]()
     
-    var managedObjectContext: NSManagedObjectContext!
-    
+    var managedObjectContext: NSManagedObjectContext! {
+        didSet {
+            NotificationCenter.default.addObserver(
+                forName: Notification.Name.NSManagedObjectContextObjectsDidChange,
+                object: managedObjectContext,
+                queue: OperationQueue.main
+            ) { _ in
+                if self.isViewLoaded {
+                    self.updateLocations()
+                }
+            }
+        }
+    }    
     // MARK: - Actions
     @IBAction func showUser() {
         let region = MKCoordinateRegion(
@@ -103,7 +114,24 @@ class MapViewController: UIViewController {
         return mapView.regionThatFits(region)
     }
     @objc func showLocationDetails(_ sender: UIButton) {
-    }    
+        performSegue(withIdentifier: "EditLocation", sender: sender)
+        
+    }
+    
+    // MARK: - Navigation
+    override func prepare(
+        for segue: UIStoryboardSegue,
+        sender: Any?
+    ) {
+        if segue.identifier == "EditLocation" {
+            let controller = segue.destination as! LocationDetailsTableViewController
+            controller.managedObjectContext = managedObjectContext
+            
+            let button = sender as! UIButton
+            let location = locations[button.tag]
+            controller.locationToEdit = location
+        }
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
