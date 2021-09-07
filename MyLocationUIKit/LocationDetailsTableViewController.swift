@@ -22,17 +22,17 @@ class LocationDetailsTableViewController: UITableViewController {
     var placemark: CLPlacemark?
     var categoryName = "No Category"
     var locationToEdit: Location? {
-      didSet {
-        if let location = locationToEdit {
-          descriptionText = location.locationDescription
-          categoryName = location.category
-          date = location.date
-          coordinate = CLLocationCoordinate2DMake(
-            location.latitude,
-            location.longitude)
-          placemark = location.placemark
+        didSet {
+            if let location = locationToEdit {
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+                coordinate = CLLocationCoordinate2DMake(
+                    location.latitude,
+                    location.longitude)
+                placemark = location.placemark
+            }
         }
-      }
     }
     var descriptionText = ""
     
@@ -52,14 +52,14 @@ class LocationDetailsTableViewController: UITableViewController {
         
         
         let location: Location
-          if let temp = locationToEdit {
+        if let temp = locationToEdit {
             hudView.text = "Updated"
             location = temp
-          } else {
+        } else {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
-          }
-
+        }
+        
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
         location.latitude = coordinate.latitude
@@ -95,7 +95,7 @@ class LocationDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         if let location = locationToEdit {
             title = "Edit Location"
-          }
+        }
         descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
         
@@ -136,6 +136,8 @@ class LocationDetailsTableViewController: UITableViewController {
     ) {
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            choosePhotoFromLibrary()
         }
     }
     
@@ -192,4 +194,38 @@ class LocationDetailsTableViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var date = Date()
     
+}
+
+extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
+                                              UINavigationControllerDelegate {
+    // MARK: - Image Helper Methods
+    func takePhotoWithCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
+      let imagePicker = UIImagePickerController()
+      imagePicker.sourceType = .photoLibrary
+      imagePicker.delegate = self
+      imagePicker.allowsEditing = true
+      present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // MARK: - Image Picker Delegates
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(
+        _ picker: UIImagePickerController
+    ) {
+        dismiss(animated: true, completion: nil)
+    }
 }
