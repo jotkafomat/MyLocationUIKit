@@ -184,15 +184,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJU-Qa-Skm">
-                                                    <rect key="frame" x="16" y="11.5" width="80" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="80" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Izd-zf-EzN">
+                                                    <rect key="frame" x="104" y="-25" width="191" height="97"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="97" id="4Rl-up-n6k"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Izd-zf-EzN" firstAttribute="leading" secondItem="DJU-Qa-Skm" secondAttribute="trailing" constant="8" symbolic="YES" id="0tx-Ml-0G2"/>
+                                                <constraint firstItem="Izd-zf-EzN" firstAttribute="top" secondItem="zbp-Q3-vdL" secondAttribute="top" constant="-25" id="2U2-DI-uB6"/>
                                                 <constraint firstItem="DJU-Qa-Skm" firstAttribute="leading" secondItem="zbp-Q3-vdL" secondAttribute="leadingMargin" id="E7B-5Z-AaW"/>
                                                 <constraint firstItem="DJU-Qa-Skm" firstAttribute="centerY" secondItem="zbp-Q3-vdL" secondAttribute="centerY" id="LDT-da-ouy"/>
+                                                <constraint firstAttribute="bottom" secondItem="Izd-zf-EzN" secondAttribute="bottom" constant="-28.5" id="OCH-yu-n69"/>
+                                                <constraint firstItem="DJU-Qa-Skm" firstAttribute="bottom" secondItem="zbp-Q3-vdL" secondAttribute="bottomMargin" id="TSw-iM-9sr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Izd-zf-EzN" secondAttribute="trailing" constant="-0.5" id="xlZ-Gz-CVt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -322,10 +333,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="DJU-Qa-Skm" id="xrw-p7-Xvd"/>
                         <outlet property="addressLabel" destination="KbP-LF-7Gn" id="gDt-Zr-if0"/>
                         <outlet property="categoryLabel" destination="7gl-u7-YBz" id="SmW-e1-4TP"/>
                         <outlet property="dateLabel" destination="dof-oO-jJC" id="16q-oE-aOs"/>
                         <outlet property="descriptionTextView" destination="IgC-LC-Ci0" id="erg-e8-cdU"/>
+                        <outlet property="imageHeight" destination="4Rl-up-n6k" id="wkP-3b-VtN"/>
+                        <outlet property="imageView" destination="Izd-zf-EzN" id="RzK-Xk-OJU"/>
                         <outlet property="latitudeLabel" destination="UhL-0D-F7m" id="9ny-KL-WpM"/>
                         <outlet property="longitudeLabel" destination="Rt8-Yc-biU" id="Ogv-0t-LdP"/>
                     </connections>

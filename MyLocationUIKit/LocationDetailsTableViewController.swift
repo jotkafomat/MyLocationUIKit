@@ -35,6 +35,15 @@ class LocationDetailsTableViewController: UITableViewController {
         }
     }
     var descriptionText = ""
+    var image: UIImage?
+    
+    func show(image: UIImage) {
+      imageView.image = image
+      imageView.isHidden = false
+      addPhotoLabel.text = ""
+    imageHeight.constant = 260
+    tableView.reloadData()
+    }
     
     // MARK: - Outlets
     @IBOutlet var descriptionTextView: UITextView!
@@ -43,6 +52,9 @@ class LocationDetailsTableViewController: UITableViewController {
     @IBOutlet var longitudeLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var addPhotoLabel: UILabel!
+    @IBOutlet var imageHeight: NSLayoutConstraint!
     
     // MARK: - Actions
     @IBAction func done() {
@@ -137,6 +149,7 @@ class LocationDetailsTableViewController: UITableViewController {
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
         } else if indexPath.section == 1 && indexPath.row == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
             pickPhoto()
         }
     }
@@ -220,7 +233,11 @@ extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
-        dismiss(animated: true, completion: nil)
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+          if let theImage = image {
+            show(image: theImage)
+          }
+          dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(
