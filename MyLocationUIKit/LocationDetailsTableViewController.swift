@@ -36,6 +36,7 @@ class LocationDetailsTableViewController: UITableViewController {
     }
     var descriptionText = ""
     var image: UIImage?
+    var observer: Any!
     
     func show(image: UIImage) {
       imageView.image = image
@@ -43,6 +44,11 @@ class LocationDetailsTableViewController: UITableViewController {
       addPhotoLabel.text = ""
     imageHeight.constant = 260
     tableView.reloadData()
+    }
+    
+    deinit {
+      print("*** deinit \(self)")
+      NotificationCenter.default.removeObserver(observer!)
     }
     
     // MARK: - Outlets
@@ -210,14 +216,17 @@ class LocationDetailsTableViewController: UITableViewController {
     
     // MARK: - Notifications
     func listenForBackgroundNotification() {
-      NotificationCenter.default.addObserver(
-        forName: UIScene.didEnterBackgroundNotification,
+      observer = NotificationCenter.default.addObserver(
+        forName: UIApplication.didEnterBackgroundNotification,
         object: nil,
-        queue: OperationQueue.main) { _ in
-        if self.presentedViewController != nil {
-          self.dismiss(animated: false, completion: nil)
+        queue: OperationQueue.main) { [weak self] _ in
+
+        if let weakSelf = self {
+          if weakSelf.presentedViewController != nil {
+            weakSelf.dismiss(animated: false, completion: nil)
+          }
+          weakSelf.descriptionTextView.resignFirstResponder()
         }
-        self.descriptionTextView.resignFirstResponder()
       }
     }
 }
