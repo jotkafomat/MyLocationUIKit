@@ -129,6 +129,7 @@ class LocationDetailsTableViewController: UITableViewController {
             action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
+        listenForBackgroundNotification()
     }
     
     override func tableView(
@@ -207,6 +208,18 @@ class LocationDetailsTableViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var date = Date()
     
+    // MARK: - Notifications
+    func listenForBackgroundNotification() {
+      NotificationCenter.default.addObserver(
+        forName: UIScene.didEnterBackgroundNotification,
+        object: nil,
+        queue: OperationQueue.main) { _ in
+        if self.presentedViewController != nil {
+          self.dismiss(animated: false, completion: nil)
+        }
+        self.descriptionTextView.resignFirstResponder()
+      }
+    }
 }
 
 extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
