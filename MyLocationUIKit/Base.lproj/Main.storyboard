@@ -407,31 +407,41 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="310-82-z7d">
-                                            <rect key="frame" x="29" y="11" width="275" height="21"/>
+                                            <rect key="frame" x="76" y="11" width="228" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmg-Wr-jfM">
-                                            <rect key="frame" x="29" y="40" width="275" height="17"/>
+                                            <rect key="frame" x="76" y="40" width="228" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NHZ-Fl-M3d">
+                                            <rect key="frame" x="16" y="6" width="52" height="52"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="2A5-cS-MKl"/>
+                                                <constraint firstAttribute="height" constant="52" id="cmq-ws-l48"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Qmg-Wr-jfM" firstAttribute="top" secondItem="310-82-z7d" secondAttribute="bottom" constant="8" symbolic="YES" id="2RD-Jd-qtT"/>
                                         <constraint firstAttribute="trailing" secondItem="Qmg-Wr-jfM" secondAttribute="trailing" constant="16" id="3W5-3U-GVA"/>
-                                        <constraint firstItem="Qmg-Wr-jfM" firstAttribute="leading" secondItem="kFn-yF-zAx" secondAttribute="leading" constant="29" id="3sG-G0-gyl"/>
+                                        <constraint firstItem="Qmg-Wr-jfM" firstAttribute="leading" secondItem="NHZ-Fl-M3d" secondAttribute="trailing" constant="8" symbolic="YES" id="I3d-WJ-WoQ"/>
+                                        <constraint firstItem="NHZ-Fl-M3d" firstAttribute="leading" secondItem="kFn-yF-zAx" secondAttribute="leading" constant="16" id="L8E-y5-vaQ"/>
+                                        <constraint firstItem="310-82-z7d" firstAttribute="leading" secondItem="NHZ-Fl-M3d" secondAttribute="trailing" constant="8" symbolic="YES" id="P5e-AX-wwj"/>
+                                        <constraint firstItem="NHZ-Fl-M3d" firstAttribute="top" secondItem="kFn-yF-zAx" secondAttribute="top" constant="6" id="Zhv-zB-hw9"/>
                                         <constraint firstAttribute="bottom" secondItem="Qmg-Wr-jfM" secondAttribute="bottom" constant="8" id="hmH-Lt-gQt"/>
                                         <constraint firstItem="310-82-z7d" firstAttribute="trailing" secondItem="kFn-yF-zAx" secondAttribute="trailingMargin" id="lCL-wQ-H5i"/>
                                         <constraint firstItem="310-82-z7d" firstAttribute="top" secondItem="kFn-yF-zAx" secondAttribute="topMargin" id="n4N-rU-lkF"/>
-                                        <constraint firstItem="310-82-z7d" firstAttribute="leading" secondItem="kFn-yF-zAx" secondAttribute="leadingMargin" constant="13" id="wJa-jE-rvu"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="Qmg-Wr-jfM" id="td6-F3-ZM5"/>
                                     <outlet property="descriptionLabel" destination="310-82-z7d" id="bnY-Ms-0fp"/>
+                                    <outlet property="photoImageView" destination="NHZ-Fl-M3d" id="clf-Vh-PQn"/>
                                     <segue destination="Mkh-Ov-HpW" kind="show" identifier="EditLocation" id="7GO-Tq-BJe"/>
                                 </connections>
                             </tableViewCell>
@@ -570,7 +580,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eqG-hp-BAG"/>
+        <segue reference="7GO-Tq-BJe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
