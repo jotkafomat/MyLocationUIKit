@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="npt-jX-6OF">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -269,7 +269,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Address" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbP-LF-7Gn">
                                                     <rect key="frame" x="16" y="12" width="62.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="0.67567908684938949" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zB5-e1-F27">
@@ -506,7 +506,7 @@
         <scene sceneID="OiJ-Hu-PfL">
             <objects>
                 <navigationController id="n7S-ZO-wfz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Locations" id="c6x-uL-mQr"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="Locations" id="c6x-uL-mQr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xat-Wh-fx9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -543,7 +543,7 @@
         <scene sceneID="HYC-fS-75p">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rxD-y2-FEA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tag" id="7L3-sO-z9m"/>
+                    <tabBarItem key="tabBarItem" title="Tag" image="Tag" id="7L3-sO-z9m"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gho-GC-Xlx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qmg-6S-K5R">
@@ -563,7 +563,7 @@
         <scene sceneID="AFq-XH-Au2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ihk-IL-XAh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="HVU-5H-rud"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map" id="HVU-5H-rud"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Zu-QW-9k4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -583,6 +583,9 @@
         <segue reference="7GO-Tq-BJe"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Locations" width="30" height="30"/>
+        <image name="Map" width="30" height="30"/>
+        <image name="Tag" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

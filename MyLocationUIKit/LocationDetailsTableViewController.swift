@@ -248,6 +248,7 @@ extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -256,6 +257,7 @@ extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
         present(imagePicker, animated: true, completion: nil)
     }
     
