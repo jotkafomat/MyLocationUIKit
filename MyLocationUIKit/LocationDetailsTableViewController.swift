@@ -39,16 +39,16 @@ class LocationDetailsTableViewController: UITableViewController {
     var observer: Any!
     
     func show(image: UIImage) {
-      imageView.image = image
-      imageView.isHidden = false
-      addPhotoLabel.text = ""
-    imageHeight.constant = 260
-    tableView.reloadData()
+        imageView.image = image
+        imageView.isHidden = false
+        addPhotoLabel.text = ""
+        imageHeight.constant = 260
+        tableView.reloadData()
     }
     
     deinit {
-      print("*** deinit \(self)")
-      NotificationCenter.default.removeObserver(observer!)
+        print("*** deinit \(self)")
+        NotificationCenter.default.removeObserver(observer!)
     }
     
     // MARK: - Outlets
@@ -76,6 +76,7 @@ class LocationDetailsTableViewController: UITableViewController {
         } else {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
+            location.photoID = nil
         }
         
         location.locationDescription = descriptionTextView.text
@@ -94,6 +95,21 @@ class LocationDetailsTableViewController: UITableViewController {
         } catch {
             fatalError("Error: \(error)")
         }
+        
+        // Save image
+        if let image = image {
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            if let data = image.jpegData(compressionQuality: 0.5) {
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
+        
     }
     
     @IBAction func cancel() {
@@ -113,6 +129,11 @@ class LocationDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         if let location = locationToEdit {
             title = "Edit Location"
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
         descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
@@ -216,18 +237,18 @@ class LocationDetailsTableViewController: UITableViewController {
     
     // MARK: - Notifications
     func listenForBackgroundNotification() {
-      observer = NotificationCenter.default.addObserver(
-        forName: UIApplication.didEnterBackgroundNotification,
-        object: nil,
-        queue: OperationQueue.main) { [weak self] _ in
-
-        if let weakSelf = self {
-          if weakSelf.presentedViewController != nil {
-            weakSelf.dismiss(animated: false, completion: nil)
-          }
-          weakSelf.descriptionTextView.resignFirstResponder()
+        observer = NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: OperationQueue.main) { [weak self] _ in
+            
+            if let weakSelf = self {
+                if weakSelf.presentedViewController != nil {
+                    weakSelf.dismiss(animated: false, completion: nil)
+                }
+                weakSelf.descriptionTextView.resignFirstResponder()
+            }
         }
-      }
     }
 }
 
@@ -243,11 +264,11 @@ extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
     }
     
     func choosePhotoFromLibrary() {
-      let imagePicker = UIImagePickerController()
-      imagePicker.sourceType = .photoLibrary
-      imagePicker.delegate = self
-      imagePicker.allowsEditing = true
-      present(imagePicker, animated: true, completion: nil)
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
     }
     
     // MARK: - Image Picker Delegates
@@ -256,10 +277,10 @@ extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-          if let theImage = image {
+        if let theImage = image {
             show(image: theImage)
-          }
-          dismiss(animated: true, completion: nil)
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(
@@ -269,39 +290,39 @@ extension LocationDetailsTableViewController: UIImagePickerControllerDelegate,
     }
     
     func pickPhoto() {
-      if true || UIImagePickerController.isSourceTypeAvailable(.camera) {
-        showPhotoMenu()
-      } else {
-        choosePhotoFromLibrary()
-      }
+        if true || UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
     }
-
+    
     func showPhotoMenu() {
-      let alert = UIAlertController(
-        title: nil,
-        message: nil,
-        preferredStyle: .actionSheet)
-
-      let actCancel = UIAlertAction(
-        title: "Cancel",
-        style: .cancel,
-        handler: nil)
-      alert.addAction(actCancel)
-
-      let actPhoto = UIAlertAction(
-        title: "Take Photo",
-        style: .default) { _ in
-        self.takePhotoWithCamera()
-      }
-      alert.addAction(actPhoto)
-
-      let actLibrary = UIAlertAction(
-        title: "Choose From Library",
-        style: .default) { _ in
-        self.choosePhotoFromLibrary()
-      }
-      alert.addAction(actLibrary)
-
-      present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet)
+        
+        let actCancel = UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil)
+        alert.addAction(actCancel)
+        
+        let actPhoto = UIAlertAction(
+            title: "Take Photo",
+            style: .default) { _ in
+            self.takePhotoWithCamera()
+        }
+        alert.addAction(actPhoto)
+        
+        let actLibrary = UIAlertAction(
+            title: "Choose From Library",
+            style: .default) { _ in
+            self.choosePhotoFromLibrary()
+        }
+        alert.addAction(actLibrary)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
