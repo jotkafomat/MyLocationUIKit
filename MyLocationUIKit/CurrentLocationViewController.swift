@@ -45,6 +45,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet var getButton: UIButton!
     @IBOutlet var latitudeTextLabel: UILabel!
     @IBOutlet var longitudeTextLabel: UILabel!
+    @IBOutlet var containerView: UIView!
     
     //    MARK: -Actionc
     
@@ -59,6 +60,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             showLocationServicesDeniedAlert()
             return
         }
+        if logoVisible {
+          hideLogoView()
+        }
+        
         if updatingLocation {
             stopLocationManager()
         } else {
@@ -206,7 +211,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             } else if updatingLocation {
                 statusMessage = "Searching..."
             } else {
-                statusMessage = "Tap Get My Location' to Start"
+                statusMessage = ""
+                showLogoView()
             }
             messageLabel.text = statusMessage
         }
@@ -247,5 +253,32 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     // MARK: - Core Data
     var managedObjectContext: NSManagedObjectContext!
+    
+    // MARK: - Logo
+    var logoVisible = false
+    
+    lazy var logoButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setBackgroundImage(
+            UIImage(named: "Logo"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(
+            self, action: #selector(getLocation), for: .touchUpInside)
+        button.center.x = self.view.bounds.midX
+        button.center.y = 220
+        return button
+    }()
+    func showLogoView() {
+        if !logoVisible {
+            logoVisible = true
+            containerView.isHidden = true
+            view.addSubview(logoButton)
+        }
+    }
+    func hideLogoView() {
+        logoVisible = false
+        containerView.isHidden = false
+        logoButton.removeFromSuperview()
+    }
 }
 
