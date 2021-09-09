@@ -43,6 +43,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var tagButton: UIButton!
     @IBOutlet var getButton: UIButton!
+    @IBOutlet var latitudeTextLabel: UILabel!
+    @IBOutlet var longitudeTextLabel: UILabel!
     
     //    MARK: -Actionc
     
@@ -171,6 +173,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             longitudeLabel.text = String(
                 format: "%.8f",
                 location.coordinate.longitude)
+            latitudeTextLabel.isHidden = false
+            longitudeTextLabel.isHidden = false
             tagButton.isHidden = false
             messageLabel.text = ""
             if let placemark = placemark {
@@ -187,6 +191,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             longitudeLabel.text = ""
             addressLabel.text = ""
             tagButton.isHidden = true
+            latitudeTextLabel.isHidden = true
+            longitudeTextLabel.isHidden = true
             let statusMessage: String
             
             if let error = lastLocationError as NSError? {
